@@ -1,0 +1,64 @@
+#データベースを一覧で表示する
+SHOW DATABASES;
+
+#データベースの作成
+CREATE DATABASE データベース名;
+#Cloud9の仕様上、mysqlにて日本語を保存するためには、DEFAULT CHARACTER SET utf8というオプションをつけてデータベースを作成する必要
+CREATE DATABASE sqltest DEFAULT CHARACTER SET utf8;
+
+#データベースを選択する
+USE データベース名;
+USE sqltest;
+
+#SHOW TABLES文は、選択したデータベースに存在するテーブルを一覧で表示する
+SHOW TABLES;
+
+#テーブルを作成
+CREATE TABLE テーブル名 (カラム名 カラム名の型, ……);
+CREATE TABLE goods (id INT, name VARCHAR(255));
+#VARCHAR(M) 最大M文字の文字列
+
+#テーブルの構造を確認する
+SHOW columns FROM テーブル名;
+SHOW columns FROM goods;
+
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| id    | int(11)      | YES  |     | NULL    |       |
+| name  | varchar(255) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+
+#カラムの変更、追加、削除
+ALTER TABLE テーブル名 操作
+
+#カラムを追加する
+ALTER TABLE テーブル名 ADD カラム名 カラムの型;
+ALTER TABLE テーブル名 ADD (カラム名 カラムの型, ……);
+ALTER TABLE goods ADD (price int, zaiko int);
+
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| id    | int(11)      | YES  |     | NULL    |       |
+| name  | varchar(255) | YES  |     | NULL    |       |
+| price | int(11)      | YES  |     | NULL    |       |
+| zaiko | int(11)      | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+#カラムの修正
+ALTER TABLE テーブル名 CHANGE 古いカラム名 新しいカラム名 新しいカラムの型:
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| id    | int(11)      | YES  |     | NULL    |       |
+| name  | varchar(255) | YES  |     | NULL    |       |
+| price | int(11)      | YES  |     | NULL    |       |
+| stock | int(11)      | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+#カラムの削除
+ALTER TABLE テーブル名 DROP カラム名;
+ALTER TABLE goods DROP stock;
