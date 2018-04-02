@@ -62,3 +62,5 @@ $ sudo yum install phpmyadmin
 $ sudo service httpd start
 
 cd ~/environment/shell
+$ sh move.sh
+$ cd ~/environment/sql

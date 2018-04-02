@@ -1,0 +1,35 @@
+#データベースの作成
+USE sqltest;
+
+#データの登録
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_sqltest |
++-------------------+
+| goods             |
++-------------------+
+1 row in set (0.00 sec)
+
+#全てのカラムに値をいれる場合
+INSERT INTO テーブル名 VALUES(値1, 値2, 値3);
+
+#特定のカラムに値をいれる場合
+INSERT INTO テーブル名(カラム名1, カラム名2) VALUES(値1, 値2);
+
+INSERT INTO goods VALUES(1, "ペン", 120);
+SELECT * FROM goods;
++------+--------+-------+
+| id   | name   | price |
++------+--------+-------+
+|    1 | ペン   |   120 |
++------+--------+-------+
+1 row in set (0.00 sec)
+
+INSERT INTO goods(id, name) VALUES(2, "消しゴム");
++------+--------------+-------+
+| id   | name         | price |
++------+--------------+-------+
+|    1 | ペン         |   120 |
+|    2 | 消しゴム     |  NULL |
++------+--------------+-------+
+2 rows in set (0.00 sec)
