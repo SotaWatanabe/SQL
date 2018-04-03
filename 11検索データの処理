@@ -1,0 +1,47 @@
+#検索データの処理
+
+#データ統合
+SELECT family_name, first_name
+FROM users
+
+#2つのカラムを統合して1つにする
+CONCAT(文字列1, 文字列2, ……)
+文字列の中にNull値があってはならない
+
+SELECT CONCAT(family_name, first_name)
+FROM users
+
+#カラムに別名をつける
+SELECT 取得するデータ AS 別名
+
+SELECT CONCAT(family_name, first_name) AS "名前"
+FROM users
+
+#重複する行の削除
+SELECT DISTINCT カラム名
+SELECT DISTINCT user_id
+
+SELECT DISTINCT user_id
+FROM shifts
+WHERE date = "2015-07-01"
+
+#レコードのグループ化
+GROUP BY カラム名
+GROUP BYを使うことには、そのグループ単位で集計した結果を取得することが出来る、という利点がある
+
+GROUP BY user_id
+"user_id"カラムの値が同じレコードが、それぞれグループ化
+
+SELECT user_id
+FROM shifts
+WHERE date = "2015-07-01"
+GROUP BY user_id
+
+#レコードの数を数える
+SELECT COUNT(カラム名)
+SELECT COUNT(*)
+
+SELECT user_id, COUNT(*)
+FROM shifts
+WHERE date = "2015-07-01"
+GROUP BY user_id
