@@ -1,0 +1,52 @@
+#phpMyAdmin上で作業をする
+
+SELECT カラム名
+FROM テーブル名
+
+SELECT family_name
+FROM users
+
+#*は全てという意味
+SELECT *
+FROM users
+
+#Where句
+
+WHERE 条件
+WHERE id = 1
+WHERE family_name = "阿部"
+WHERE id <= 5
+
+SELECT *
+FROM users
+WHERE family_name = "阿部"
+→名字が阿部の人だけ検索される
+
+#and or 演算子
+WHERE a AND b
+SELECT *
+FROM users
+WHERE age <= 22 AND prefecture = "神奈川県"
+
+WHERE a OR b
+SELECT *
+FROM users
+WHERE age <= 20 OR prefecture = "東京都"
+
+#Not演算子
+WHERE NOT a
+SELECT *
+FROM users
+WHERE NOT prefecture = "東京都"
+
+#Between演算子
+WHERE カラム名 BETWEEN 下限 AND 上限
+SELECT *
+FROM users
+WHERE age BETWEEN 21 AND 24
+
+#In演算子
+WHERE カラム名 IN (値1, 値2, ……)
+SELECT *
+FROM users
+WHERE prefecture IN ("東京都", "神奈川県")

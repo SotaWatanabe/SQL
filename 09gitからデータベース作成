@@ -1,0 +1,16 @@
+#sqlを抜ける
+mysql> exit
+
+#プロジェクトをクローン
+git clone https://github.com/we-b/sql_curriculum.git
+
+cd sql_curriculum
+
+#gemのインストール
+$ bundle install
+
+#データベースの作成
+$ rake db:create
+
+rake db:migrate
+rake db:seed
